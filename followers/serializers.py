@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext as _
 from rest_framework import serializers
 
 from followers.models import Relationship
@@ -23,7 +24,7 @@ class RelationshipSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         request_user = self.context.get('request').user
         if request_user == attrs.get('target'):
-            raise serializers.ValidationError('You can not follow yourself.')
+            raise serializers.ValidationError(_('You can not follow yourself.'))
         if Relationship.objects.filter(origin=request_user, target=attrs.get('target')).exists():
-            raise serializers.ValidationError('You are already following this user.')
+            raise serializers.ValidationError(_('You are already following this user.'))
         return attrs
