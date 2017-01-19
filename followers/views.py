@@ -1,17 +1,27 @@
+from rest_framework.mixins import ListModelMixin, CreateModelMixin
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
-from followers.serializers import RelationshipUserSerializer
+from followers.models import Relationship
+from followers.serializers import RelationshipUserSerializer, RelationshipSerializer
 from followers.utils import get_following
 
 
-class FollowingViewSet(GenericViewSet):
+class FollowingViewSet(ListModelMixin, GenericViewSet):
 
     serializer_class = RelationshipUserSerializer
     permission_classes = (IsAuthenticated,)
 
-    def list(self, request):
-        following = get_following(request.user)
-        serializer = RelationshipUserSerializer(following, many=True)
-        return Response(serializer.data)
+    def get_queryset(self):
+        return get_following(self.request.user)
+
+
+
+class FollowViewSet(CreateModelMixin, GenericViewSet):
+
+    serializer_class = RelationshipSerializer
+    permission_classes = (IsAuthenticated,)
+    queryset = Relationship.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(origin=self.request.user)
