@@ -146,4 +146,4 @@ THUMBNAIL_ALIASES = {
 }
 
 
-BROKER_URL = 'django//:'  # tells celery that it has to connect to Kombu
+BROKER_URL = 'django://'  # tells celery that it has to connect to Kombu
