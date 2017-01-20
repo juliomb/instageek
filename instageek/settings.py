@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'easy_thumbnails',
     'rest_framework',
     'followers',
+    'posts',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +127,10 @@ LOCALE_PATHS = (
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+
+DEFAULT_IMAGE_SIZE = (800, 800)
