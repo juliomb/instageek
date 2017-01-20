@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'easy_thumbnails',
     'rest_framework',
+    'kombu.transport.django',  # to use Kombu as broker/task manager
     'followers',
     'posts',
 ]
@@ -143,3 +144,6 @@ THUMBNAIL_ALIASES = {
         'large': {'size': (1000, 1000), 'crop': True},
     },
 }
+
+
+BROKER_URL = 'django//:'  # tells celery that it has to connect to Kombu

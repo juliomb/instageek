@@ -3,6 +3,7 @@ from rest_framework.viewsets import ModelViewSet
 
 from posts.models import Post
 from posts.serializers import PostSerializer
+from posts.utils import generate_responsive_images
 
 
 class PostViewSet(ModelViewSet):
@@ -12,7 +13,9 @@ class PostViewSet(ModelViewSet):
     permission_classes = (IsAuthenticated,)
 
     def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
+        post = serializer.save(owner=self.request.user)
+        generate_responsive_images.delay(post)
 
     def perform_update(self, serializer):
-        serializer.save(owner=self.request.user)
+        post = serializer.save(owner=self.request.user)
+        generate_responsive_images.delay(post)
