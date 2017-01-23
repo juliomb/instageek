@@ -27,4 +27,6 @@ urlpatterns = [
     url(r'^api/', include('followers.urls')),
     url(r'^api/', include('posts.urls')),
     url(r'^api/obtain-token/', obtain_auth_token),  # returns token doing POST with user/password
+    url(r'^api/rest-auth/', include('rest_auth.urls')),
+    url(r'^api/rest-auth/registration/', include('rest_auth.registration.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
