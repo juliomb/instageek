@@ -17,6 +17,4 @@ class Command(BaseCommand):
         for post in posts:
             self.stdout.write("Resizing post's {0} image".format(post.pk))
             generate_responsive_images(post)
-            post.image_resized = True
-            post.save()
             self.stdout.write(self.style.SUCCESS("Post's {0} image resized successfully!").format(post.pk))
