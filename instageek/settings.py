@@ -38,9 +38,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'easy_thumbnails',
-    'rest_framework',
+    'rest_framework.authtoken',  # models/classes to generate API KEYs
     'followers',
     'posts',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -146,3 +147,13 @@ THUMBNAIL_ALIASES = {
 
 
 BROKER_URL = 'amqp://'
+
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
