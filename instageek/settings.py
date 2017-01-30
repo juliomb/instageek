@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'rest_auth',
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
     'rest_auth.registration',
+    'oauth2_provider',
     'followers',
     'posts',
     'users',
@@ -161,6 +163,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',  # enabel JWT
+        'oauth2_provider.ext.rest_framework.OAuth2Authentication'
     )
 }
 
