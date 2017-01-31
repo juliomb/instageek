@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../followers/.idea/followers.iml" filepath="$PROJECT_DIR$/../followers/.idea/followers.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/instageek.iml" filepath="$PROJECT_DIR$/.idea/instageek.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../notifications/.idea/notifications.iml" filepath="$PROJECT_DIR$/../notifications/.idea/notifications.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../posts/.idea/posts.iml" filepath="$PROJECT_DIR$/../posts/.idea/posts.iml" />
     </modules>
   </component>
 </project>
